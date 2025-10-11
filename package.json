@@ -1,0 +1,45 @@
+{
+  "name": "ssy-ui-vite",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.15.1",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "dev": "vite",
+    "build": "vite build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "^3.7.3",
+    "@unocss/eslint-plugin": "^0.62.4",
+    "eslint": "^9.11.1",
+    "eslint-plugin-format": "^0.1.2",
+    "typescript": "5.5.4",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@iconify-json/ic": "^1.2.4",
+    "@types/markdown-it": "^14.1.2",
+    "@unocss/preset-icons": "^0.63.3",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue-jsx": "^5.1.1",
+    "@vue/test-utils": "2.4.6",
+    "happy-dom": "15.7.4",
+    "jsdom": "^27.0.0",
+    "terser": "5.34.1",
+    "unocss": "^0.63.3",
+    "vite": "^5.0.0",
+    "vitepress": "^1.6.4",
+    "vitepress-theme-demoblock": "3.0.7",
+    "vitest": "2.1.2"
+  }
+}
