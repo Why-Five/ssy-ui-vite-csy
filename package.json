@@ -1,7 +1,7 @@
 {
   "name": "ssy-ui-vite-csy",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "packageManager": "pnpm@10.15.1",
   "description": "SSY UI - A Vue 3 UI component library",
   "author": "",
