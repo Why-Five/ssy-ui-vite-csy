@@ -10,6 +10,7 @@
   "main": "dist/ssy-ui.umd.cjs",
   "module": "dist/ssy-ui.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "test": "vitest run",
     "dev": "vite",
@@ -44,8 +45,7 @@
     "vitepress-theme-demoblock": "3.0.7",
     "vitest": "2.1.2"
   },
-  "files": ["dist"],
-   "publishConfig": {
+  "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   }
