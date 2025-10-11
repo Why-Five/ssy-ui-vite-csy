@@ -1,45 +1,19 @@
-# .github/workflows/publish.yml
-# 自动发布npm包的工作流
+name: PublishToNpm
 
-name: Publish Package to npmjs
-
-# 控制工作流触发条件
 on:
   push:
-    branches: [ publish ] # 在publish分支推送时触发
-  workflow_dispatch: # 允许手动触发
+    branches: [publish-ssy-ui-vite]
 
-# 工作流任务
 jobs:
   publish:
-    # 运行在Ubuntu环境上
     runs-on: ubuntu-latest
-    # 任务步骤
     steps:
-      # 检出代码
       - uses: actions/checkout@v4
-      
-      # 设置pnpm环境
       - uses: pnpm/action-setup@v3
         with:
-          version: 10.15.1 # 与项目packageManager版本一致
-      
-      # 设置Node.js环境
-      - uses: actions/setup-node@v4
+          version: 9.8.0
+      - run: pnpm install
+      - run: pnpm run build
+      - uses: JS-DevTools/npm-publish@v1
         with:
-          node-version: '20' # 使用支持的Node.js版本
-          registry-url: 'https://registry.npmjs.org/' # 设置npm官方registry
-      
-      # 安装依赖
-      - name: Install dependencies
-        run: pnpm install
-      
-      # 构建项目
-      - name: Build project
-        run: pnpm run build
-      
-      # 发布npm包
-      - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # 使用GitHub Secrets中的npm访问令牌
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
