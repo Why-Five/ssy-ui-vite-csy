@@ -38,8 +38,17 @@ jobs:
           version: 9.8.0
       - name: Install modules
         run: pnpm install
-      - name: Run Test
-        run: pnpm test
+      - name: Run Test with Coverage
+        run: pnpm test:coverage
+      - name: Download Codecov CLI
+        run: |
+          curl -Os https://cli.codecov.io/latest/linux/codecov
+          curl -Os https://cli.codecov.io/latest/linux/codecov.SHA256SUM
+          chmod +x codecov
+      - name: Upload coverage to Codecov via CLI
+        run: ./codecov upload-process
+        env:
+          CODECOV_TOKEN: 5179db93-6a55-4158-9250-d9037aea86fa
   PreBuild:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest

@@ -1,15 +1,28 @@
 {
-  "name": "ssy-ui-vite",
+  "name": "ssy-ui-vite-csy",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "packageManager": "pnpm@10.15.1",
-  "description": "",
+  "description": "SSY UI - A Vue 3 UI component library",
   "author": "",
   "license": "ISC",
-  "keywords": [],
-  "main": "index.js",
+  "keywords": [
+    "vue3",
+    "ui",
+    "component",
+    "library",
+    "vite"
+  ],
+  "main": "dist/ssy-ui.umd.cjs",
+  "module": "dist/ssy-ui.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  
   "scripts": {
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "dev": "vite",
     "build": "vite build",
     "docs:dev": "vitepress dev docs",
@@ -32,6 +45,7 @@
     "@unocss/preset-icons": "^0.63.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.1.1",
+    "@vitest/coverage-v8": "^3.2.4",
     "@vue/test-utils": "2.4.6",
     "happy-dom": "15.7.4",
     "jsdom": "^27.0.0",
@@ -41,5 +55,9 @@
     "vitepress": "^1.6.4",
     "vitepress-theme-demoblock": "3.0.7",
     "vitest": "2.1.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
