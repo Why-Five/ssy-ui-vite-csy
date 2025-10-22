@@ -40,9 +40,22 @@ jobs:
         run: pnpm install
       - name: Run Test with Coverage
         run: pnpm test:coverage
-      - name: Download Codecov CLI
+      - name: Download and verify Codecov CLI
         run: |
+          # Download Codecov public key
+          curl -Os https://keybase.io/codecovsecurity/pgp_keys.asc
+          gpg --import pgp_keys.asc
+          
+          # Download Codecov CLI and verification files
           curl -Os https://uploader.codecov.io/latest/linux/codecov
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
+          
+          # Verify signature and checksum
+          gpg --verify codecov.SHA256SUM.sig codecov.SHA256SUM
+          shasum -a 256 -c codecov.SHA256SUM
+          
+          # Make executable
           chmod +x codecov
       - name: Upload coverage to Codecov via CLI
         run: ./codecov upload-process
