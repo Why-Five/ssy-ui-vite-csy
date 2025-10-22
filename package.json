@@ -10,6 +10,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "dev": "vite",
     "build": "vite build",
     "docs:dev": "vitepress dev docs",
@@ -32,6 +33,7 @@
     "@unocss/preset-icons": "^0.63.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.1.1",
+    "@vitest/coverage-v8": "2.1.2",
     "@vue/test-utils": "2.4.6",
     "happy-dom": "15.7.4",
     "jsdom": "^27.0.0",
@@ -42,6 +44,7 @@
     "vitepress-theme-demoblock": "3.0.7",
     "vitest": "2.1.2"
   },
-  "files": ["dist"]
-  
+  "files": [
+    "dist"
+  ]
 }
