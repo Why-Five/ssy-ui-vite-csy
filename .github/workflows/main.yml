@@ -40,27 +40,10 @@ jobs:
         run: pnpm install
       - name: Run Test with Coverage
         run: pnpm test:coverage
-      - name: Download and verify Codecov CLI
-        run: |
-          # Download Codecov public key
-          curl -Os https://keybase.io/codecovsecurity/pgp_keys.asc
-          gpg --import pgp_keys.asc
-          
-          # Download Codecov CLI and verification files
-          curl -Os https://uploader.codecov.io/latest/linux/codecov
-          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
-          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
-          
-          # Verify signature and checksum
-          gpg --verify codecov.SHA256SUM.sig codecov.SHA256SUM
-          shasum -a 256 -c codecov.SHA256SUM
-          
-          # Make executable
-          chmod +x codecov
-      - name: Upload coverage to Codecov via CLI
-        run: ./codecov upload-process
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
   PreBuild:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
